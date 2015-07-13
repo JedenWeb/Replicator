@@ -317,6 +317,10 @@ class Container extends Nette\Forms\Container
 			throw new Nette\InvalidArgumentException('Given component ' . $container->name . ' is not children of ' . $this->name . '.');
 		}
 
+		if ($this->forceDefault && count($this->created) <= $this->createDefault) {
+			return;
+		}
+
 		// to check if form was submitted by this one
 		foreach ($container->getComponents(TRUE, 'Nette\Forms\ISubmitterControl') as $button) {
 			/** @var \Nette\Forms\Controls\SubmitButton $button */
