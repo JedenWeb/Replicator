@@ -138,7 +138,7 @@ class Container extends Nette\Forms\Container
 	 */
 	protected function createComponent($name)
 	{
-		$container = $this->createContainer($name);
+		$container = $this->createContainer();
 		$container->currentGroup = $this->currentGroup;
 		$this->addComponent($container, $name, $this->getFirstControlName());
 
@@ -162,11 +162,9 @@ class Container extends Nette\Forms\Container
 
 
 	/**
-	 * @param string $name
-	 *
 	 * @return \Nette\Forms\Container
 	 */
-	protected function createContainer($name)
+	protected function createContainer()
 	{
 		$class = $this->containerClass;
 		return new $class();
