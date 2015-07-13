@@ -217,10 +217,9 @@ class Container extends Nette\Forms\Container
 	/**
 	 * @param array|\Traversable $values
 	 * @param bool $erase
-	 * @param bool $onlyDisabled
 	 * @return \Nette\Forms\Container|Container
 	 */
-	public function setValues($values, $erase = FALSE, $onlyDisabled = FALSE)
+	public function setValues($values, $erase = FALSE)
 	{
 		if (!$this->form->isAnchored() || !$this->form->isSubmitted()) {
 			foreach ($values as $name => $value) {
@@ -230,7 +229,7 @@ class Container extends Nette\Forms\Container
 			}
 		}
 
-		return parent::setValues($values, $erase, $onlyDisabled);
+		return parent::setValues($values, $erase);
 	}
 
 
