@@ -29,6 +29,22 @@ require_once __DIR__ . '/../bootstrap.php';
 class ContainerTest extends Tester\TestCase
 {
 
+	public function testRemoving()
+	{
+		$form = new BaseForm();
+		$users = $form->addDynamic('users', function (Nette\Forms\Container $user) {
+			$user->addText('name');
+		});
+		$this->connectForm($form);
+
+		$component = $users->createOne();
+		$users->remove($component);
+		$users->createOne();
+
+		// container
+		Assert::same(1, iterator_count($users->getComponents()));
+	}
+
 	public function testReplicating()
 	{
 		$replicator = new Container(function (Nette\Forms\Container $container) {

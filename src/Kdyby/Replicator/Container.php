@@ -362,6 +362,7 @@ class Container extends Nette\Forms\Container
 		/** @var \Nette\Forms\Controls\BaseControl[] $components */
 		$components = $container->getComponents(TRUE);
 		$this->removeComponent($container);
+		unset($this->created[$container->name]);
 
 		// reflection is required to hack form groups
 		$groupRefl = Nette\Reflection\ClassType::from('Nette\Forms\ControlGroup');
